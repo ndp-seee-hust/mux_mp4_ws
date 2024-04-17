@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "minimp4.h": "c",
+        "unistd.h": "c",
+        "ipc.h": "c"
+    }
+}

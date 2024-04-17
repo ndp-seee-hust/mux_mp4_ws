@@ -1,0 +1,2 @@
+/usr/bin/ar qc libminimp4.a  CMakeFiles/minimp4.dir/src/minimp4.c.o
+/usr/bin/ranlib libminimp4.a

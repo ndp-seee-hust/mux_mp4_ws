@@ -1,0 +1,3 @@
+# project(fdk)
+
+# add_library(fdk STATIC "")

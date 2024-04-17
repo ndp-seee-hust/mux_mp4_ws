@@ -1,0 +1,6 @@
+# project(aac_dec)
+
+# file(GLOB AAC_DEC_SRCS "src/*.cpp" "src/arm/*.cpp")
+# include_directories(include)
+
+# add_library(aac_dec STATIC ${AAC_DEC_SRCS})

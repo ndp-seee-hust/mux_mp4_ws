@@ -1,0 +1,2 @@
+/usr/bin/ar qc libh264reader.a  CMakeFiles/h264reader.dir/h264reader.c.o
+/usr/bin/ranlib libh264reader.a

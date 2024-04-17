@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/h264reader/h264reader.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+h264reader.h
+/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/h264reader/h264reader.h
+
+/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/h264reader/h264reader.h
+

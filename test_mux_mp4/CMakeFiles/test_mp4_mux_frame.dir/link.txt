@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/test_mp4_mux_frame.dir/unit_test/test_mp4_mux_frame.c.o  -o test_mp4_mux_frame  thirdparty/minimp4/libminimp4.a thirdparty/h264reader/libh264reader.a thirdparty/log/liblog.a 

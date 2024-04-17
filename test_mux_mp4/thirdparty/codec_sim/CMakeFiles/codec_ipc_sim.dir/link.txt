@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcodec_ipc_sim.a  CMakeFiles/codec_ipc_sim.dir/sim_ipc.c.o CMakeFiles/codec_ipc_sim.dir/ipc.c.o
+/usr/bin/ranlib libcodec_ipc_sim.a

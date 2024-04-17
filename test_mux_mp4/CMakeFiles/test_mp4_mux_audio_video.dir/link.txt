@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/test_mp4_mux_audio_video.dir/unit_test/test_mux_audio_video.c.o  -o test_mp4_mux_audio_video  thirdparty/minimp4/libminimp4.a thirdparty/h264reader/libh264reader.a thirdparty/codec_sim/libcodec_ipc_sim.a thirdparty/log/liblog.a libs/libfdk-aac.a thirdparty/h264reader/libh264reader.a -lpthread 

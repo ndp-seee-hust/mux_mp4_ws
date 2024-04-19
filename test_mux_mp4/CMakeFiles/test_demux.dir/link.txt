@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/test_demux.dir/unit_test/test_demux.c.o  -o test_demux  thirdparty/minimp4/libminimp4.a thirdparty/h264reader/libh264reader.a thirdparty/log/liblog.a libs/libfdk-aac.a 

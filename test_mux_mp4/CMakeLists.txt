@@ -31,11 +31,21 @@ target_include_directories(test_mp4_mux_audio_video PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libAACenc
     )
 
+add_executable(test_demux
+  ${CMAKE_CURRENT_SOURCE_DIR}/unit_test/test_demux.c)
+target_include_directories(test_demux PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/minimp4/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/log
+    ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libAACdec
+    ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libAACenc
+    )
+
+
 if(THREADS_HAVE_PTHREAD_ARG)
   target_compile_options(test_mp4_mux_audio_video PUBLIC "-pthread")
 endif()
 
 target_link_libraries(test_mp4_mux_audio_video PRIVATE minimp4 h264reader codec_ipc_sim log fdk-aac)
-
+target_link_libraries(test_demux PRIVATE minimp4 h264reader log fdk-aac)
 
 add_subdirectory(thirdparty)

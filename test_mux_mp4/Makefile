@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named test_demux
+
+# Build rule for target.
+test_demux: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_demux
+.PHONY : test_demux
+
+# fast build rule for target.
+test_demux/fast:
+	$(MAKE) -f CMakeFiles/test_demux.dir/build.make CMakeFiles/test_demux.dir/build
+.PHONY : test_demux/fast
+
+#=============================================================================
 # Target rules for targets named test_mp4_mux_audio_video
 
 # Build rule for target.
@@ -188,6 +201,33 @@ log/fast:
 	$(MAKE) -f thirdparty/log/CMakeFiles/log.dir/build.make thirdparty/log/CMakeFiles/log.dir/build
 .PHONY : log/fast
 
+unit_test/test_demux.o: unit_test/test_demux.c.o
+
+.PHONY : unit_test/test_demux.o
+
+# target to build an object file
+unit_test/test_demux.c.o:
+	$(MAKE) -f CMakeFiles/test_demux.dir/build.make CMakeFiles/test_demux.dir/unit_test/test_demux.c.o
+.PHONY : unit_test/test_demux.c.o
+
+unit_test/test_demux.i: unit_test/test_demux.c.i
+
+.PHONY : unit_test/test_demux.i
+
+# target to preprocess a source file
+unit_test/test_demux.c.i:
+	$(MAKE) -f CMakeFiles/test_demux.dir/build.make CMakeFiles/test_demux.dir/unit_test/test_demux.c.i
+.PHONY : unit_test/test_demux.c.i
+
+unit_test/test_demux.s: unit_test/test_demux.c.s
+
+.PHONY : unit_test/test_demux.s
+
+# target to generate assembly for a file
+unit_test/test_demux.c.s:
+	$(MAKE) -f CMakeFiles/test_demux.dir/build.make CMakeFiles/test_demux.dir/unit_test/test_demux.c.s
+.PHONY : unit_test/test_demux.c.s
+
 unit_test/test_mp4_mux_frame.o: unit_test/test_mp4_mux_frame.c.o
 
 .PHONY : unit_test/test_mp4_mux_frame.o
@@ -250,12 +290,16 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test_demux"
 	@echo "... test_mp4_mux_audio_video"
 	@echo "... test_mp4_mux_frame"
 	@echo "... codec_ipc_sim"
 	@echo "... minimp4"
 	@echo "... h264reader"
 	@echo "... log"
+	@echo "... unit_test/test_demux.o"
+	@echo "... unit_test/test_demux.i"
+	@echo "... unit_test/test_demux.s"
 	@echo "... unit_test/test_mp4_mux_frame.o"
 	@echo "... unit_test/test_mp4_mux_frame.i"
 	@echo "... unit_test/test_mp4_mux_frame.s"

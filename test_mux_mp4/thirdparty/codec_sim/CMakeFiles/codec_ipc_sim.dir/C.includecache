@@ -6,16 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/codec_sim/ipc.c
-stdlib.h
--
-stdio.h
--
-ipc.h
-/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/codec_sim/ipc.h
-../../thirdparty/log/log.h
-/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/log/log.h
-
 /home/ndp/Documents/workspace/test_mux_mp4/thirdparty/codec_sim/ipc.h
 stdint.h
 -

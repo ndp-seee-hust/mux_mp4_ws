@@ -379,6 +379,10 @@ int init(char *file_h264)
     fp_inH264 = fopen(file_h264, "r");
     if (fp_inH264 == NULL)
         return -1;
+    else
+    {
+        log_debug("open h264 file\n");
+    }
 
     if (fread(g_cach[icach], 1, CACH_LEN, fp_inH264) < CACH_LEN)
     {
@@ -430,8 +434,16 @@ static void *sim_ipc_video_task(void *instance)
         struct timeval tv;
 
         int len = 0;
-        while ((len = get_one_frame(buffer, CACH_LEN)) > 0)
+        //while ((len = get_one_frame(buffer, CACH_LEN)) > 0)
+        while(1)
         {
+            
+            len = get_one_frame(buffer, CACH_LEN);
+            if(len <= 0)
+            {
+                if (init(ipc->video_file))
+                    return NULL;
+            }
             int is_key_frame = 0;
             int frame_type = H264CheckNalType(buffer[4]);
             if (frame_type == 5)
@@ -458,6 +470,9 @@ static void *sim_ipc_video_task(void *instance)
             usleep(sleep);
             // usleep(40 * 1000); // fps = 1 / (0.04 s) = 25}
             // }
+            
+
+
         }
 
         free(buffer);
@@ -559,7 +574,7 @@ void *sim_ipc_audio_task(void *param)
 
             offset += var.aac_frame_length;
             // log_debug("var.aac_frame_length = %d\n", var.aac_frame_length);
-            usleep(interval * 1000);
+            usleep(interval * 10000);
         }
         else
         {

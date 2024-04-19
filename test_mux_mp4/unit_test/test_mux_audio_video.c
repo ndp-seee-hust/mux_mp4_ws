@@ -39,9 +39,17 @@ static int write_callback(int64_t offset, const void *buffer, size_t size, void 
 
 static void stop_mux(void)
 {
+    
     MP4E_close(mux_ctx->mp4_mux);
     mp4_h26x_write_close(&mux_ctx->mp4wr);
-    fclose(mux_ctx->mp4_file);
+    if(mux_ctx->mp4_file != NULL){
+        fclose(mux_ctx->mp4_file);
+        log_debug("closed mp4 file\n");
+    }
+    if(mux_ctx != NULL){
+        free(mux_ctx);
+        log_debug("free buffer\n");
+    }
     log_info("=============> Stop mux mp4");
 }
 
@@ -58,6 +66,11 @@ static int VideoFrameCallBack(uint8_t *frame, int len, int iskey, int64_t timest
     {
         log_debug("h26x_write_nal OK");
     }
+
+    if(len == -1){
+        stop_mux();
+        return -1;
+    }
     mux_ctx->count_frame_in_video++;
     log_debug("=============> count = %d\n", mux_ctx->count_frame_in_video);
     //sleep(1);
@@ -70,7 +83,7 @@ static int AudioFrameCallBack(uint8_t *frame, int len, int64_t timestamp)
     
     log_debug("Timestamp: %ld , frame AUDIO len: %d", timestamp, len);
     if(MP4E_STATUS_OK != MP4E_put_sample(mux_ctx->mp4_mux, mux_ctx->audio_track_num, frame,
-                              len, 1024*90000/AUDIO_RATE, MP4E_SAMPLE_RANDOM_ACCESS))
+                              len, 1024*90000/AUDIO_RATE, MP4E_SAMPLE_DEFAULT))
     {
         log_error("Put audio sample failed\n");
         return -1;
@@ -122,7 +135,7 @@ int main()
     mux_ctx->mp4_mux = NULL;
     mux_ctx->mp4_file = NULL;
 
-    mux_ctx->mp4_file = fopen("/home/ndp/Documents/workspace/test_mux_mp4/test_file/mp4.mp4", "wb");
+    mux_ctx->mp4_file = fopen("/home/ndp/Documents/workspace/test_mux_mp4/test_file/test.mp4", "wb");
     if (mux_ctx->mp4_file == NULL)
     {
         log_error("Can't open file mp4");
@@ -157,7 +170,7 @@ int main()
     else
         log_info("init mp4_h26x_write_init ok");
 
-    while (mux_ctx->count_frame_in_video < 2800 && mux_ctx->count_frame_in_audio < 4800)
+    while (mux_ctx->count_frame_in_video < 6000)
     {
         //log_info("=================> Count frame: %d", mux_ctx->count_frame_in_video);
         //sleep(1);
@@ -167,7 +180,7 @@ int main()
     stop_mux();
     log_debug("%d", mux_ctx->count_frame_in_video);
     log_debug("%d", mux_ctx->count_frame_in_audio);
-    free(mux_ctx);
+    
 
     return 0;
 }

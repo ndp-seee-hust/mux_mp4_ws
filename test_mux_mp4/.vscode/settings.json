@@ -3,5 +3,6 @@
         "minimp4.h": "c",
         "unistd.h": "c",
         "ipc.h": "c"
-    }
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }

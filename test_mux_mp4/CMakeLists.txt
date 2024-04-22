@@ -38,8 +38,8 @@ target_include_directories(test_demux PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/log
     ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libAACdec
     ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libAACenc
+    ${CMAKE_CURRENT_SOURCE_DIR}/demux_output_file
     )
-
 
 if(THREADS_HAVE_PTHREAD_ARG)
   target_compile_options(test_mp4_mux_audio_video PUBLIC "-pthread")
@@ -49,3 +49,4 @@ target_link_libraries(test_mp4_mux_audio_video PRIVATE minimp4 h264reader codec_
 target_link_libraries(test_demux PRIVATE minimp4 h264reader log fdk-aac)
 
 add_subdirectory(thirdparty)
+

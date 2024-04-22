@@ -234,6 +234,12 @@ codec_sim_BINARY_DIR:STATIC=/home/ndp/Documents/workspace/test_mux_mp4/thirdpart
 codec_sim_SOURCE_DIR:STATIC=/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/codec_sim
 
 //Value Computed by CMake
+demux_output_file_BINARY_DIR:STATIC=/home/ndp/Documents/workspace/test_mux_mp4/demux_output_file
+
+//Value Computed by CMake
+demux_output_file_SOURCE_DIR:STATIC=/home/ndp/Documents/workspace/test_mux_mp4/demux_output_file
+
+//Value Computed by CMake
 h264reader_BINARY_DIR:STATIC=/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/h264reader
 
 //Value Computed by CMake

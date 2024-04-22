@@ -14,6 +14,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "thirdparty/log"
   "thirdparty/libAACdec"
   "thirdparty/libAACenc"
+  "demux_output_file"
   "thirdparty/h264reader"
   "thirdparty/libAACdec/include"
   "thirdparty/libAACenc/include"

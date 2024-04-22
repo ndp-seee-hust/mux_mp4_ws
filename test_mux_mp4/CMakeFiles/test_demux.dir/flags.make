@@ -6,5 +6,5 @@ C_FLAGS =
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/minimp4/include -I/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/log -I/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/libAACdec -I/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/libAACenc -I/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/h264reader -isystem /home/ndp/Documents/workspace/test_mux_mp4/thirdparty/libAACdec/include -isystem /home/ndp/Documents/workspace/test_mux_mp4/thirdparty/libAACenc/include -isystem /home/ndp/Documents/workspace/test_mux_mp4/thirdparty/libFDK/include 
+C_INCLUDES = -I/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/minimp4/include -I/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/log -I/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/libAACdec -I/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/libAACenc -I/home/ndp/Documents/workspace/test_mux_mp4/demux_output_file -I/home/ndp/Documents/workspace/test_mux_mp4/thirdparty/h264reader -isystem /home/ndp/Documents/workspace/test_mux_mp4/thirdparty/libAACdec/include -isystem /home/ndp/Documents/workspace/test_mux_mp4/thirdparty/libAACenc/include -isystem /home/ndp/Documents/workspace/test_mux_mp4/thirdparty/libFDK/include 
 

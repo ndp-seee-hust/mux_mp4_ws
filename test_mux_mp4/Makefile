@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/ndp/Documents/workspace/test_mux_mp4
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -109,6 +109,19 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named test_demux_ofs
+
+# Build rule for target.
+test_demux_ofs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_demux_ofs
+.PHONY : test_demux_ofs
+
+# fast build rule for target.
+test_demux_ofs/fast:
+	$(MAKE) -f CMakeFiles/test_demux_ofs.dir/build.make CMakeFiles/test_demux_ofs.dir/build
+.PHONY : test_demux_ofs/fast
 
 #=============================================================================
 # Target rules for targets named test_demux
@@ -228,6 +241,33 @@ unit_test/test_demux.c.s:
 	$(MAKE) -f CMakeFiles/test_demux.dir/build.make CMakeFiles/test_demux.dir/unit_test/test_demux.c.s
 .PHONY : unit_test/test_demux.c.s
 
+unit_test/test_demux_ofs.o: unit_test/test_demux_ofs.c.o
+
+.PHONY : unit_test/test_demux_ofs.o
+
+# target to build an object file
+unit_test/test_demux_ofs.c.o:
+	$(MAKE) -f CMakeFiles/test_demux_ofs.dir/build.make CMakeFiles/test_demux_ofs.dir/unit_test/test_demux_ofs.c.o
+.PHONY : unit_test/test_demux_ofs.c.o
+
+unit_test/test_demux_ofs.i: unit_test/test_demux_ofs.c.i
+
+.PHONY : unit_test/test_demux_ofs.i
+
+# target to preprocess a source file
+unit_test/test_demux_ofs.c.i:
+	$(MAKE) -f CMakeFiles/test_demux_ofs.dir/build.make CMakeFiles/test_demux_ofs.dir/unit_test/test_demux_ofs.c.i
+.PHONY : unit_test/test_demux_ofs.c.i
+
+unit_test/test_demux_ofs.s: unit_test/test_demux_ofs.c.s
+
+.PHONY : unit_test/test_demux_ofs.s
+
+# target to generate assembly for a file
+unit_test/test_demux_ofs.c.s:
+	$(MAKE) -f CMakeFiles/test_demux_ofs.dir/build.make CMakeFiles/test_demux_ofs.dir/unit_test/test_demux_ofs.c.s
+.PHONY : unit_test/test_demux_ofs.c.s
+
 unit_test/test_mp4_mux_frame.o: unit_test/test_mp4_mux_frame.c.o
 
 .PHONY : unit_test/test_mp4_mux_frame.o
@@ -288,8 +328,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... rebuild_cache"
+	@echo "... test_demux_ofs"
 	@echo "... test_demux"
 	@echo "... test_mp4_mux_audio_video"
 	@echo "... test_mp4_mux_frame"
@@ -300,6 +341,9 @@ help:
 	@echo "... unit_test/test_demux.o"
 	@echo "... unit_test/test_demux.i"
 	@echo "... unit_test/test_demux.s"
+	@echo "... unit_test/test_demux_ofs.o"
+	@echo "... unit_test/test_demux_ofs.i"
+	@echo "... unit_test/test_demux_ofs.s"
 	@echo "... unit_test/test_mp4_mux_frame.o"
 	@echo "... unit_test/test_mp4_mux_frame.i"
 	@echo "... unit_test/test_mp4_mux_frame.s"

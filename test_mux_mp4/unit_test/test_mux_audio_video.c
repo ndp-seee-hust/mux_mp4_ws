@@ -110,7 +110,7 @@ int main()
             .video_codec = H264,
             .video_fps = 30,
             .audio_sample = 48000,                  // Don't need set this param, program auto define base on audio file
-            .video_file = "/home/ndp/Documents/workspace/test_mux_mp4/test_file/test.h264", // Test with big_file becase this file have many I frame
+            .video_file = "/home/ndp/Documents/workspace/test_mux_mp4/demux_output_file/test_demux.h264", // Test with big_file becase this file have many I frame
             .audio_file = "/home/ndp/Documents/workspace/test_mux_mp4/test_file/aac-sample.aac",
             .pic_file = NULL,
             .video_cb = VideoFrameCallBack,
@@ -170,7 +170,7 @@ int main()
     else
         log_info("init mp4_h26x_write_init ok");
 
-    while (mux_ctx->count_frame_in_video < 6000)
+    while (mux_ctx->count_frame_in_video < 1000)
     {
         //log_info("=================> Count frame: %d", mux_ctx->count_frame_in_video);
         //sleep(1);

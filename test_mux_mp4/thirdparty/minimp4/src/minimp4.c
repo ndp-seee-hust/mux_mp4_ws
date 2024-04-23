@@ -2799,7 +2799,9 @@ int MP4D_open(MP4D_demux_t *mp4, int (*read_callback)(int64_t offset, void *buff
     {
         RETURN_ERROR("no tracks found");
     }
+
     return 1;
+    
 }
 
 /**

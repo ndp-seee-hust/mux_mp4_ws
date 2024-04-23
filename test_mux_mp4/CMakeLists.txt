@@ -33,7 +33,19 @@ target_include_directories(test_mp4_mux_audio_video PUBLIC
 
 add_executable(test_demux
   ${CMAKE_CURRENT_SOURCE_DIR}/unit_test/test_demux.c)
+
+add_executable(test_demux_ofs
+  ${CMAKE_CURRENT_SOURCE_DIR}/unit_test/test_demux_ofs.c)
+
 target_include_directories(test_demux PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/minimp4/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/log
+    ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libAACdec
+    ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libAACenc
+    ${CMAKE_CURRENT_SOURCE_DIR}/demux_output_file
+    )
+
+target_include_directories(test_demux_ofs PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/minimp4/include
     ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/log
     ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libAACdec
@@ -47,6 +59,7 @@ endif()
 
 target_link_libraries(test_mp4_mux_audio_video PRIVATE minimp4 h264reader codec_ipc_sim log fdk-aac)
 target_link_libraries(test_demux PRIVATE minimp4 h264reader log fdk-aac)
+target_link_libraries(test_demux_ofs PRIVATE minimp4 h264reader log fdk-aac)
 
 add_subdirectory(thirdparty)
 

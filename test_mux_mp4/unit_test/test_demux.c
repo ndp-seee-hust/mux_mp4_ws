@@ -18,6 +18,8 @@ static uint8_t *preload(const char *path, ssize_t *data_size)
     if (fseek(file, 0, SEEK_END))
         exit(1);
     *data_size = (ssize_t)ftell(file);
+
+    log_debug("data size: %ld", *data_size);
     if (*data_size < 0)
         exit(1);
     if (fseek(file, 0, SEEK_SET))
@@ -28,6 +30,7 @@ static uint8_t *preload(const char *path, ssize_t *data_size)
     if ((ssize_t)fread(data, 1, *data_size, file) != *data_size)
         exit(1);
     fclose(file);
+    log_debug("data size: %ld", data);
     return data;
 }
 
@@ -59,7 +62,9 @@ int main()
     {
         log_debug("Opened mp4 file [OK]\n");
     }
-    
+
+    log_debug("data size: %ld", h264_size);
+   
     FILE *h264_file_output = fopen("/home/ndp/Documents/workspace/test_mux_mp4/demux_output_file/test_demux.h264", "wb");
     if (h264_file_output == NULL)
     {
@@ -74,6 +79,7 @@ int main()
     
     MP4D_demux_t mp4_demux ;
     MP4D_open(&mp4_demux, read_callback, &input_buf, h264_size);
+
 
     int i = 0; 
     int spspps_bytes;
@@ -97,14 +103,25 @@ int main()
 
     for (i = 0; i < mp4_demux.track[ntrack].sample_count; i++)
     {
+        log_debug("Sample: %d", i);
         unsigned frame_bytes, timestamp, duration;
         MP4D_file_offset_t ofs = MP4D_frame_offset(&mp4_demux, ntrack, i, &frame_bytes, &timestamp, &duration);
-        uint8_t *mem = input_buf + ofs;
+        uint8_t *mem = input_buf + ofs ;
+        log_debug("mem: %ld, input: %ld", mem, input_buf);
+        log_debug("ofs: %ld", ofs);
+        log_debug("frame_byte: %ld", frame_bytes);
+        log_debug("next ofs: %ld", ofs+frame_bytes+8);
+        // mem[0] = 0; mem[1] = 0; mem[2] = 0; mem[3] = 1;
+        // fwrite(mem, 1, frame_bytes, h264_file_output);
+       
         while (frame_bytes)
         {
+            
             uint32_t size = ((uint32_t)mem[0] << 24) | ((uint32_t)mem[1] << 16) | ((uint32_t)mem[2] << 8) | mem[3];
             size += 4;
+            log_debug("Size: %d", size);
             mem[0] = 0; mem[1] = 0; mem[2] = 0; mem[3] = 1;
+            log_debug("mem: %ld", mem);
             fwrite(mem, 1, size, h264_file_output);
             if (frame_bytes < size)
             {
@@ -115,8 +132,9 @@ int main()
             mem += size;
             
         }
-    }
         
+    }
+    log_debug("file size: %ld", h264_size);
     MP4D_close(&mp4_demux);
     if (input_buf)
         free(input_buf);
